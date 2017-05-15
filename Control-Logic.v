@@ -39,7 +39,7 @@ CLK,GATE,OUT,null_count,
   
   end
   ///////////////////////////////
-  
+  //////////////hhhhhhhhhhhhhhhhhhhhh
   
    if (control_word[1:0]==2'b10) //mode 2
   begin
