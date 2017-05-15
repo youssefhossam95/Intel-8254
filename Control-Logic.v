@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module ControlLogic(control_word,initial_count,//current_count,
 CLK,GATE,OUT,null_count,
   CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_enable,count_enable,load_new_count );
@@ -92,3 +93,6 @@ CLK,GATE,OUT,null_count,
 end
 endmodule
 
+=======
+test
+>>>>>>> origin/master
