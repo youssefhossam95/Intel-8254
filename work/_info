@@ -9,64 +9,106 @@ z2
 cModel Technology
 Z0 dC:/altera/15.1/8254/Intel-8254
 vControlLogic
-!s110 1495010933
+Z1 !s110 1495045666
 !i10b 1
-!s100 a]Wf1:TQ8Qk=IA7bE7Q`<1
-I0<AAAkPfE83I1nON;lf@K2
-Z1 VDg1SIo80bB@j0V0VzS_@n1
+!s100 o>V9ORmC6:C;dRPKO9fC02
+ImGmDfJaYj0VIhYYY:8TGC2
+Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1495010694
-8Control-Logic.v
-FControl-Logic.v
-L0 2
-Z2 OV;L;10.4b;61
-r1
-!s85 0
-31
-Z3 !s108 1495010933.000000
-Z4 !s107 Counting Element.v|Control-Logic.v|C:\altera\15.1\8254\Intel-8254\test.v|
-Z5 !s90 -reportprogress|300|-work|work|-stats=none|C:\altera\15.1\8254\Intel-8254\test.v|
-!i113 1
-Z6 o-work work
-n@control@logic
-vCountingElement
-Z7 !s110 1495010934
-!i10b 1
-!s100 8W_Xf[^7=BNW_i4@g3c3l1
-I_SHJ8@0I<f[Z@m]Nh0MT[3
-R1
-R0
-w1495009757
-8Counting Element.v
-FCounting Element.v
+w1495045660
+8C:/altera/15.1/8254/Intel-8254/Control-Logic.v
+FC:/altera/15.1/8254/Intel-8254/Control-Logic.v
 L0 1
-R2
+Z3 OV;L;10.4b;61
 r1
 !s85 0
 31
-R3
-R4
-R5
+Z4 !s108 1495045666.000000
+!s107 C:/altera/15.1/8254/Intel-8254/Control-Logic.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/altera/15.1/8254/Intel-8254/Control-Logic.v|
 !i113 1
-R6
+Z5 o-work work
+n@control@logic
+vCounter
+R1
+!i10b 1
+!s100 3KOakezKSNK:B]goFfE2I0
+IDb_5lfnkF>I1BDL]U3gjO3
+R2
+R0
+w1495018729
+8C:/altera/15.1/8254/Intel-8254/Counter.v
+FC:/altera/15.1/8254/Intel-8254/Counter.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/15.1/8254/Intel-8254/Counter.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/altera/15.1/8254/Intel-8254/Counter.v|
+!i113 1
+R5
+n@counter
+vCountingElement
+R1
+!i10b 1
+!s100 WLB?0Vf1ei23^@LgZng:B1
+INgM6IZB>6X;aFNHf9[aQF2
+R2
+R0
+w1495018183
+8C:/altera/15.1/8254/Intel-8254/Counting Element.v
+FC:/altera/15.1/8254/Intel-8254/Counting Element.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/15.1/8254/Intel-8254/Counting Element.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/altera/15.1/8254/Intel-8254/Counting Element.v|
+!i113 1
+R5
 n@counting@element
 vtestb
-R7
+!s110 1495026009
 !i10b 1
 !s100 _=V8oBQ5VRRAoGQXM1In11
 I]7oTA6c9hg;71IekOZjk53
-R1
+R2
 R0
 w1495010892
 8C:\altera\15.1\8254\Intel-8254\test.v
 FC:\altera\15.1\8254\Intel-8254\test.v
 L0 3
-R2
+R3
 r1
 !s85 0
 31
-R3
-R4
-R5
+!s108 1495026009.000000
+!s107 Counting Element.v|Control-Logic.v|C:\altera\15.1\8254\Intel-8254\test.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:\altera\15.1\8254\Intel-8254\test.v|
 !i113 1
-R6
+R5
+vTimer_8254
+R1
+!i10b 1
+!s100 I]LAIiVNCi6HlL:83Jm]]0
+Il`^eh@H`FDJh]]oOjDCIi1
+R2
+R0
+w1495020086
+8C:/altera/15.1/8254/Intel-8254/8254.v
+FC:/altera/15.1/8254/Intel-8254/8254.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/altera/15.1/8254/Intel-8254/8254.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/altera/15.1/8254/Intel-8254/8254.v|
+!i113 1
+R5
+n@timer_8254

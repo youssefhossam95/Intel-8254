@@ -1,19 +1,27 @@
- module CountingElement(initial_count,current_count,CLK,count_enable,load_new_count,BCD,RW,enableTwo);
+ module CountingElement(initial_count,current_count,CLK,count_enable,load_new_count,count_loaded,counter_programmed,BCD,RW,enableTwo);
   
   input [15:0] initial_count;
   output [15:0] current_count;
   input CLK,count_enable,load_new_count,BCD,enableTwo;
+  output count_loaded;
+  input counter_programmed;
   input [1:0] RW;
   reg [15:0] current_count;
+  reg count_loaded;
   wire[7:0] subtractValue;
   
   assign subtractValue = 
 (enableTwo) ? 8'b00000010:8'b00000001;
+
+  always @(counter_programmed)
+    if(counter_programmed)
+      count_loaded <= 0;
   
   always @(posedge CLK) //lessa hazawed mawdoo3 hay3ed 3ala anhy byte(s)
   begin
 	
 	if(load_new_count) begin
+		count_loaded <= 1;
 		if(enableTwo && initial_count[0]==1) begin //odd count and mode 3 
 			current_count <= initial_count-1;
 		end 

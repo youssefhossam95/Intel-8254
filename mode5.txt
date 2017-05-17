@@ -1,92 +1,86 @@
-vsim -gui work.testb
-# vsim -gui work.testb 
-# Start time: 00:57:04 on May 17,2017
-# Loading work.testb
-# Loading work.ControlLogic
+vsim -gui work.Timer_8254
+# vsim -gui work.Timer_8254 
+# Start time: 15:22:02 on May 17,2017
+# Loading work.Timer_8254
+# Loading work.Counter
 # Loading work.CountingElement
-# ** Warning: (vsim-3015) C:/altera/15.1/8254/Intel-8254/test.v(14): [PCDPC] - Port size (1) does not match connection size (32) for port 'WR'. The port definition is at: Control-Logic.v(4).
-#    Time: 0 ps  Iteration: 0  Instance: /testb/cl File: Control-Logic.v
-# ** Warning: (vsim-3015) C:/altera/15.1/8254/Intel-8254/test.v(14): [PCDPC] - Port size (1) does not match connection size (32) for port 'RD'. The port definition is at: Control-Logic.v(4).
-#    Time: 0 ps  Iteration: 0  Instance: /testb/cl File: Control-Logic.v
-# ** Warning: (vsim-3015) C:/altera/15.1/8254/Intel-8254/test.v(14): [PCDPC] - Port size (1) does not match connection size (32) for port 'CS'. The port definition is at: Control-Logic.v(4).
-#    Time: 0 ps  Iteration: 0  Instance: /testb/cl File: Control-Logic.v
-# ** Warning: (vsim-3015) C:/altera/15.1/8254/Intel-8254/test.v(17): [PCDPC] - Port size (2) does not match connection size (1) for port 'RW'. The port definition is at: Counting Element.v(1).
-#    Time: 0 ps  Iteration: 0  Instance: /testb/ce File: Counting Element.v
+# Loading work.ControlLogic
 add wave -position insertpoint  \
-sim:/testb/control_word \
-sim:/testb/clk \
-sim:/testb/GATE \
-sim:/testb/myAddress \
-sim:/testb/selectedAddress \
-sim:/testb/statusByte \
-sim:/testb/OUT \
-sim:/testb/initial_count \
-sim:/testb/current_count \
-sim:/testb/count_enable \
-sim:/testb/load_new_count \
-sim:/testb/BCD \
-sim:/testb/RW \
-sim:/testb/null_count \
-sim:/testb/CRM_enable \
-sim:/testb/CRL_enable \
-sim:/testb/OLM_enable \
-sim:/testb/OLL_enable \
-sim:/testb/status_register_enable \
-sim:/testb/status_latch_enable
-force -freeze sim:/testb/clk 0 0, 1 {50 ps} -r 100
-force -freeze sim:/testb/GATE 1 0
-force -freeze sim:/testb/initial_count 16#4 0
-add wave -position 11  sim:/testb/cl/startLoading
-add wave -position 12  sim:/testb/ce/subtractValue
-force -freeze sim:/testb/ce/enableTwo 0 0
-force -freeze sim:/testb/ce/subtractOne 0 0
-run
-run
-force -freeze sim:/testb/control_word 00011010 0
-force -freeze sim:/testb/myAddress 00 0
-run
-run
-run
-force -freeze sim:/testb/cl/startLoading 1 0
-run
-run
-force -freeze sim:/testb/cl/startLoading 0 0
+sim:/Timer_8254/D \
+sim:/Timer_8254/A \
+sim:/Timer_8254/WR \
+sim:/Timer_8254/RD \
+sim:/Timer_8254/CS \
+sim:/Timer_8254/CLK \
+sim:/Timer_8254/GATE \
+sim:/Timer_8254/OUT \
+sim:/Timer_8254/data_bus \
+sim:/Timer_8254/counter_out \
+sim:/Timer_8254/control_word
+force -freeze sim:/Timer_8254/WR 0 0
+force -freeze sim:/Timer_8254/RD 1 0
+force -freeze sim:/Timer_8254/CS 1 0
+force -freeze sim:/Timer_8254/CS 0 0
+force -freeze {sim:/Timer_8254/CLK[0]} 0 0, 1 {50 ps} -r 100
+force -freeze sim:/Timer_8254/D 00011010 0
+force -freeze sim:/Timer_8254/A 11 0
 run
 run
 run
 run
-force -freeze sim:/testb/GATE 0 0
+force -freeze sim:/Timer_8254/D 16#4 0
+force -freeze sim:/Timer_8254/A 00 0
+run
+run
+force -freeze sim:/Timer_8254/WR 1 0
+add wave -position insertpoint  \
+sim:/Timer_8254/counter0/in_count
+add wave -position insertpoint  \
+sim:/Timer_8254/counter0/CR
+run
+add wave -position insertpoint  \
+sim:/Timer_8254/counter0/current_count \
+sim:/Timer_8254/counter0/latched_count
+run
+add wave -position end  sim:/Timer_8254/counter0/CE/current_count
+force -freeze {sim:/Timer_8254/GATE[0]} 0 0
 run
 run
 run
+run
+force -freeze {sim:/Timer_8254/GATE[0]} 1 0
 run
 run
 run
 run
 run
-force -freeze sim:/testb/GATE 1 0
 run
 run
 run
 run
-force -freeze sim:/testb/GATE 0 0
 run
+run
+run
+force -freeze sim:/Timer_8254/WR 0 0
+force -freeze sim:/Timer_8254/D 16#5 0
 run 
-run 
-run 
-force -freeze sim:/testb/GATE 1 0
-run 
-run 
+force -freeze {sim:/Timer_8254/GATE[0]} 0 0
+run
+run
+force -freeze {sim:/Timer_8254/GATE[0]} 1 0 
 run 
 run
-run
-run
-run
-run
-run
+force -freeze sim:/Timer_8254/WR 1 0
 run
 run
 run
 run 
+run
 run 
 run 
+run 
+run 
+run
+run 
+run 
+run
