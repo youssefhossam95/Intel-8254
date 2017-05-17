@@ -1,26 +1,17 @@
- module CountingElement(initial_count,current_count,CLK,count_enable,load_new_count,BCD,RW,enableTwo,subtractOne);
+ module CountingElement(initial_count,current_count,CLK,count_enable,load_new_count,BCD,RW);
   
   input [15:0] initial_count;
   output [15:0] current_count;
-  input CLK,count_enable,load_new_count,BCD,enableTwo,subtractOne;
+  input CLK,count_enable,load_new_count,BCD;
   input [1:0] RW;
-  reg [15:0] current_count;
-  wire[7:0] subtractValue;
   
-  assign subtractValue = 
-(enableTwo) ? 8'b00000010:8'b00000001;
+  reg [15:0] current_count;
   
   always @(posedge CLK) //lessa hazawed mawdoo3 hay3ed 3ala anhy byte(s)
   begin
 	
 	if(load_new_count) begin
-		if(subtractOne) begin 
-		current_count <= initial_count-1;
-		
-		end 
-		else begin 
           current_count <= initial_count;
-		end
 	end
 	else begin 
 		if(count_enable)
@@ -30,21 +21,21 @@
 				if(BCD & current_count[7:0]==8'h00)
 				  current_count[7:0] <= 8'h99;
 				else
-				  current_count[7:0] <= current_count[7:0] - subtractValue;
+				  current_count[7:0] <= current_count[7:0] - 1;
 			  end
 			else if(RW==2'b10)
 			  begin
 				if(BCD & current_count[15:8]==8'h00)
 				  current_count[15:8] <= 8'h99;
 				else
-				  current_count[15:8] <= current_count[15:8] - subtractValue;
+				  current_count[15:8] <= current_count[15:8] - 1;
 			  end
 			else
 			  begin
 				if(BCD & current_count==16'h0000)
 				  current_count <= 16'h9999;
 				else
-				  current_count <= current_count - {8'b00000000,subtractValue};
+				  current_count <= current_count - 1;
 			  end
 			
 		  end

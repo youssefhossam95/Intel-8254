@@ -1,0 +1,109 @@
+# Reading C:/altera/15.1/modelsim_ase/tcl/vsim/pref.tcl
+# Loading project 8254 chip
+# Compile of Counting Element.v was successful.
+# Compile of Control-Logic.v failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of Counting Element.v was successful.
+# Compile of Control-Logic.v failed with 8 errors.
+# 2 compiles, 1 failed with 8 errors.
+# Compile of Counting Element.v was successful.
+# Compile of Control-Logic.v failed with 1 errors.
+# 2 compiles, 1 failed with 1 error.
+# Compile of Counting Element.v was successful.
+# Compile of Control-Logic.v failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of Counting Element.v was successful.
+# Compile of Control-Logic.v failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of Counting Element.v was successful.
+# Compile of Control-Logic.v failed with 1 errors.
+# 2 compiles, 1 failed with 1 error.
+# Compile of Control-Logic.v was successful.
+# Load canceled
+# Compile of test.v failed with 1 errors.
+# Compile of test.v failed with 1 errors.
+# Compile of test.v failed with 3 errors.
+# Compile of test.v failed with 1 errors.
+# Compile of test.v failed with 1 errors.
+# Compile of test.v was successful.
+vsim -gui work.testb
+# vsim -gui work.testb 
+# Start time: 19:20:16 on May 16,2017
+# Loading work.testb
+# Loading work.ControlLogic
+# Loading work.CountingElement
+# ** Warning: (vsim-3015) C:/altera/15.1/8254/Intel-8254/test.v(17): [PCDPC] - Port size (2) does not match connection size (1) for port 'RW'. The port definition is at: Counting Element.v(1).
+#    Time: 0 ps  Iteration: 0  Instance: /testb/ce File: Counting Element.v
+add wave -position insertpoint  \
+sim:/testb/control_word \
+sim:/testb/clk \
+sim:/testb/GATE \
+sim:/testb/myAddress \
+sim:/testb/selectedAddress \
+sim:/testb/statusByte \
+sim:/testb/OUT \
+sim:/testb/initial_count \
+sim:/testb/current_count \
+sim:/testb/count_enable \
+sim:/testb/load_new_count \
+sim:/testb/BCD \
+sim:/testb/RW \
+sim:/testb/null_count \
+sim:/testb/CRM_enable \
+sim:/testb/CRL_enable \
+sim:/testb/OLM_enable \
+sim:/testb/OLL_enable \
+sim:/testb/status_register_enable \
+sim:/testb/status_latch_enable
+force -freeze sim:/testb/clk 0 0, 1 {50 ps} -r 100
+force -freeze sim:/testb/GATE 0 0
+force -freeze sim:/testb/myAddress 1 0
+force -freeze sim:/testb/selectedAddress 2 0
+# Invalid binary digit: 2.
+# ** Error: (vsim-4011) Invalid force value: 2 0.
+
+# 
+force -freeze sim:/testb/selectedAddress 10 0
+force -freeze sim:/testb/control_word h12 0
+# Invalid binary digit: h.
+# ** Error: (vsim-4011) Invalid force value: h12 0.
+
+# 
+force -freeze sim:/testb/control_word 12 0
+# Invalid binary digit: 2.
+# ** Error: (vsim-4011) Invalid force value: 12 0.
+
+# 
+force -freeze sim:/testb/control_word 16#12 0
+run
+run
+force -freeze sim:/testb/selectedAddress 01 0
+run
+run
+run
+force -freeze sim:/testb/myAddress 00 0
+run
+run
+force -freeze sim:/testb/initial_count 16#5 0
+add wave -position insertpoint sim:/testb/cl/#ASSIGN#29/*
+run
+run
+run
+force -freeze sim:/testb/GATE 1 0
+run
+force -freeze sim:/testb/GATE 0 0
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+
