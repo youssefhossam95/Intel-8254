@@ -9,13 +9,13 @@ z2
 cModel Technology
 Z0 dC:/altera/15.1/8254/Intel-8254
 vControlLogic
-Z1 !s110 1495001175
+Z1 !s110 1495006303
 !i10b 1
-!s100 G[fRzaU<6nlc4i0hI>JWS1
-I5UHIlS:R<a5K[OR]^X?0k3
+!s100 j;GHVFa_1a8z1AI;2_PC=0
+I9[^<2@CJ50Xi_i68[^c270
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-w1494996742
+w1495006299
 8Control-Logic.v
 FControl-Logic.v
 L0 2
@@ -23,7 +23,7 @@ Z3 OV;L;10.4b;61
 r1
 !s85 0
 31
-Z4 !s108 1495001175.000000
+Z4 !s108 1495006303.000000
 Z5 !s107 Counting Element.v|Control-Logic.v|C:\altera\15.1\8254\Intel-8254\test.v|
 Z6 !s90 -reportprogress|300|-work|work|-stats=none|C:\altera\15.1\8254\Intel-8254\test.v|
 !i113 1

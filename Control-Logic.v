@@ -27,7 +27,7 @@ CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_
 	reg [7:0] statusByte;
 	wire [2:0] mode;
 	assign mode=statusByte[3:1];
-	reg outFlag,startLoading;
+	reg outFlag,startLoading,mode2Init;
 	wire [1:0] readType; //01 lsb 10 msb 11 lsb then msb 
 	assign readType=statusByte[5:4];
 	always@(posedge clk)
@@ -127,8 +127,53 @@ CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_
 				
 		end 
 	end 
-	
 	//mode 4 end
+	
+	//mode 2 start
+	
+	
+	always@(negedge GATE)
+	begin
+		if(mode==2) begin 
+			OUT=1;
+			count_enable=0;
+		end
+	end
+	
+	always@(posedge GATE)
+	begin 
+		if(mode==2) begin 
+				load_new_count=1;
+				count_enable=1;
+		end
+	end
+	
+	always@(posedge clk)
+	begin
+		
+		if(control_word[3:1]==2 && RD==1 && WR==0 && CS==0 && control_word[7:6]==myAddress) begin 
+			mode2Init=1;
+		end
+	
+		if(mode==2) begin
+			OUT=1;
+			if(startLoading && mode2Init) begin //initalizing count
+				mode2Init=0;
+				load_new_count=1;
+			end
+			if(current_count==2) begin 
+				load_new_count=1;
+				OUT=0;
+			
+			end
+		
+		
+		end
+		
+	
+	end
+	
+	//mode 2 end
 	
 	//joe zyadat
 	

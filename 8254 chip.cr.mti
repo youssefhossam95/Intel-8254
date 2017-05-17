@@ -1,11 +1,4 @@
-C:/altera/15.1/8254/Intel-8254/Control-Logic.v {1 {vlog -work work -stats=none {C:\altera\15.1\8254\Intel-8254\Control-Logic.v}
-Model Technology ModelSim ALTERA vlog 10.4b Compiler 2015.05 May 27 2015
--- Compiling module ControlLogic
-
-Top level modules:
-	ControlLogic
-
-} {} {}} C:/altera/15.1/8254/Intel-8254/test.v {1 {vlog -work work -stats=none {C:\altera\15.1\8254\Intel-8254\test.v}
+C:/altera/15.1/8254/Intel-8254/test.v {1 {vlog -work work -stats=none {C:\altera\15.1\8254\Intel-8254\test.v}
 Model Technology ModelSim ALTERA vlog 10.4b Compiler 2015.05 May 27 2015
 -- Compiling module ControlLogic
 -- Compiling module CountingElement
@@ -13,5 +6,12 @@ Model Technology ModelSim ALTERA vlog 10.4b Compiler 2015.05 May 27 2015
 
 Top level modules:
 	testb
+
+} {} {}} {C:/altera/15.1/8254/Intel-8254/Counting Element.v} {1 {vlog -work work -stats=none {C:\altera\15.1\8254\Intel-8254\Counting Element.v}
+Model Technology ModelSim ALTERA vlog 10.4b Compiler 2015.05 May 27 2015
+-- Compiling module CountingElement
+
+Top level modules:
+	CountingElement
 
 } {} {}}
