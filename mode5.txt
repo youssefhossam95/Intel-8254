@@ -39,6 +39,7 @@ force -freeze sim:/testb/initial_count 16#4 0
 add wave -position 11  sim:/testb/cl/startLoading
 add wave -position 12  sim:/testb/ce/subtractValue
 force -freeze sim:/testb/ce/enableTwo 0 0
+force -freeze sim:/testb/ce/subtractOne 0 0
 run
 run
 force -freeze sim:/testb/control_word 00011010 0
