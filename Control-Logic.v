@@ -1,7 +1,7 @@
 
 module ControlLogic(control_word,initial_count,current_count,
 clk,GATE,OUT,null_count,
-CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_enable,count_enable,load_new_count,myAddress,selectedAddress,statusByte,WR,RD,CS);
+CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_enable,count_enable,load_new_count,myAddress,selectedAddress,statusByte,WR,RD,CS,enableTwo);
 
 	input [7:0] control_word;
 	input [15:0] initial_count;
@@ -10,7 +10,6 @@ CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_
 	output OUT,null_count;
 	input CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_enable;
 	output count_enable;
-	
 	output load_new_count ;
 	reg OUT;
 	reg strobe;
@@ -22,10 +21,12 @@ CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_
 	
 	//joe zyadat
 	input [1:0] myAddress,selectedAddress;
+	output enableTwo;
 	reg count_enable;
 	output [7:0] statusByte;
 	reg [7:0] statusByte;
 	wire [2:0] mode;
+	reg enableTwo;
 	assign mode=statusByte[3:1];
 	reg outFlag,startLoading,mode2Init;
 	wire [1:0] readType; //01 lsb 10 msb 11 lsb then msb 
@@ -40,6 +41,14 @@ CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_
 	end
 	
 	//mode 0 start
+	
+	always@(posedge clk)
+	begin 
+		if(mode!=3) begin 
+			enableTwo=0;
+		end 
+	end 
+	
 	
 	always@(GATE or clk)
 	begin 
@@ -143,8 +152,8 @@ CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_
 	always@(posedge GATE)
 	begin 
 		if(mode==2) begin 
-				load_new_count=1;
-				count_enable=1;
+			load_new_count=1;
+			count_enable=1;
 		end
 	end
 	
@@ -209,6 +218,7 @@ CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_
 	if (initial_count[0]==1'b1)
 	begin
 	//mode_3_init_temp<=initial_count-1;
+	
 	mode_3_odd_flag<=1;
 	end
 	else if (initial_count[0]==1'b0)
@@ -219,9 +229,28 @@ CRM_enable,CRL_enable,OLM_enable,OLL_enable,status_register_enable,status_latch_
 	end
 	end
 	
+	always@(negedge GATE)
+	begin
+		if(mode==3) begin 
+			OUT=1;
+			count_enable=0;
+		end
+	end
+	
+	always@(posedge GATE)
+	begin 
+		if(mode==3) begin 
+			load_new_count=1;
+			count_enable=1;
+		end
+	end
+	
+	
+	
 	always@(posedge clk) /////////////////////////////// mode 3 -not sure at all about it -
  if (mode==3)
  begin
+	enableTwo=1;
    if ({GATE,mode_3_zero_flag}==2'b11|| ((mode_3_high_flag==1'b1||mode_3_low_flag==1'b1)&&mode_3_init_done==1'b0))
   begin
  // OUT<=1;

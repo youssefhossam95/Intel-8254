@@ -1,8 +1,8 @@
- module CountingElement(initial_count,current_count,CLK,count_enable,load_new_count,BCD,RW,enableTwo,subtractOne);
+ module CountingElement(initial_count,current_count,CLK,count_enable,load_new_count,BCD,RW,enableTwo);
   
   input [15:0] initial_count;
   output [15:0] current_count;
-  input CLK,count_enable,load_new_count,BCD,enableTwo,subtractOne;
+  input CLK,count_enable,load_new_count,BCD,enableTwo;
   input [1:0] RW;
   reg [15:0] current_count;
   wire[7:0] subtractValue;
@@ -14,12 +14,11 @@
   begin
 	
 	if(load_new_count) begin
-		if(subtractOne) begin 
-		current_count <= initial_count-1;
-		
+		if(enableTwo && initial_count[0]==1) begin //odd count and mode 3 
+			current_count <= initial_count-1;
 		end 
 		else begin 
-          current_count <= initial_count;
+			current_count <= initial_count;
 		end
 	end
 	else begin 
